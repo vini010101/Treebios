@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeBios - Configurações</title>
+    <link rel="stylesheet" href="configuracoes.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Logo -->
+        <div class="logo-section">
+            <img src="/template/treebios_vertical-cor.png" alt="TreeBios Logo" class="logo">
+        </div>
+
+        <!-- Faixa Etária Tabs -->
+        <div class="faixa-tabs">
+            <div class="tab active">Faixa Etária: Adulto</div>
+            <div class="tab">Faixa Etária: Criança</div>
+            <div class="tab">Faixa Etária: Idoso</div>
+        </div>
+
+        <!-- Container Principal -->
+        <div class="config-card">
+            <h2>Configurações de Quartis</h2>
+
+            <!-- Container dos Quartis -->
+            <div id="quartis-container">
+                <!-- Preenchido dinamicamente pelo JS -->
+            </div>
+
+            <!-- Botões -->
+            <div class="button-group">
+                <button class="save-button" onclick="salvarIntervalos()">Salvar</button>
+                <button class="back-button" onclick="voltarParaExames()">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <script src="/login/auth.js"></script>
+    <script src="configuracoes.js"></script>
+</body>
+</html>

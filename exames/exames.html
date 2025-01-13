@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TreeBios - Exames</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Botão de Configurações -->
+        <button class="config-button" onclick="window.location.href='../configuracoes/configuracoes.html'">
+            <i data-lucide="settings"></i>
+            Configurações
+        </button>
+
+        <!-- Logo -->
+        <div class="logo-section">
+            <img src="/template/treebios_vertical-cor.png" alt="TreeBios Logo" class="logo">
+        </div>
+
+        <!-- Container dos exames -->
+        <div class="exames-container">
+            <div class="exames-grid">
+                <div class="form-group">
+                    <label>Hemácias (milhões/mm³)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="hemacias" placeholder="4.1, 4.5, 5.0, 5.3">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Hemoglobina (g/dL)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="hemoglobina" placeholder="12.5, 13.5, 14.2, 15.0">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Hematócrito (%)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="hematocrito" placeholder="38, 41, 43, 46">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>VCM - Volume Corpuscular Médio (fL)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="vcm" placeholder="82, 92, 95, 98">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>HCM - Hemoglobina Corpuscular Média (pg)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="hcm" placeholder="27, 29, 31, 33">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>CHCM - Concentração de Hemoglobina Corpuscular Média (g/dL)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="chcm" placeholder="32, 33, 34, 36">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>RDW - Amplitude de Distribuição dos Glóbulos Vermelhos (%)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="rdw" placeholder="11.5, 12.5, 13.5, 14.5">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Plaquetas (mil/mm³)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="plaquetas" placeholder="150, 200, 350, 450">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Leucócitos (mil/mm³)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="leucocitos" placeholder="4.0, 6.0, 8.0, 10.0">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Eosinófilos (%)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="eosinofilos" placeholder="1, 2, 3, 4">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                    <label>Monócitos (%)</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="monocitos" placeholder="2, 4, 6, 8">
+                        <i data-lucide="check-circle" class="check-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="button-group">
+                <button class="avancar-button" onclick="calcularQuartisFormulario()">Avançar</button>
+                <button class="voltar-button" onclick="window.location.href='../dadosCadastrais/DadosCadastrais.html'">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="/login/auth.js"></script>
+    <script src="quartis.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório Final</title>
+    <link rel="stylesheet" href="relatorio.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="nav-bar">
+          <a href="/exames/exames.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            voltar
+          </a>
+          <button class="download-btn" onclick="generatePDF()">
+            <i data-lucide="download"></i>
+            Baixar Relatório
+          </button>
+        </nav>
+        <div class="top-bar">
+          <div class="logo-section">
+            <img
+              src="/template/treebios_vertical-cor.png"
+              alt="Treebios Logo"
+            />
+          </div>
+          <div class="header-info">
+            <div class="report-section">
+              <h1>Relatório Final</h1>
+              <div id="patient-info" class="patient-info">
+                <!-- Preenchido JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th>Índice</th>
+              <th>Q0</th>
+              <th>Q1</th>
+              <th>Q2</th>
+              <th>Q3</th>
+              <th>Q4</th>
+              <th>Q5</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-corpo">
+            <!-- Preenchido JS -->
+          </tbody>
+        </table>
+
+        <div class="legenda">
+          <span class="baixo">ABAIXO E ACIMA DO IDEAL</span>
+          <span class="ideal">IDEAL</span>
+        </div>
+
+        <div class="therapeutic-container">
+          <!-- Título principal -->
+          <h2 class="therapeutic-guide">
+            Relatório de Orientações Terapêuticas
+          </h2>
+
+          <div>
+            <div class="document-header">
+              <div class="patient-info-header">
+                <div class="patient-details" id="patient-details-guide">
+                </div>
+              </div>
+              <div class="logo-container" id="logo-associado">
+              </div>
+            </div>
+          <div>
+
+          <div class="orientacao">
+            <!-- Seção de início do dia -->
+            <div class="inicio-dia">
+              <h3>
+                <i data-lucide="sun"></i>
+                COMECE O DIA ASSIM
+              </h3>
+              <div class="orientacao-content">
+                <p class="orientacao-texto">
+                  Escovando a língua ou melhor... raspando a 😜 pois toxinas
+                  noturnas do metabolismo hepático são depositadas na língua e
+                  são capazes de inflamar o corpo. Nunca use pasta de dentes com
+                  flúor na língua, e nem mesmo nos dentes. O uso do flúor
+                  impacta a tireoide causando inflamação. Este hábito deve ser
+                  levado em continuidade para a vida toda.
+                </p>
+                <div class="artigo-header">
+                  <i data-lucide="book-open"></i>
+                  <p class="artigo-titulo">ARTIGO: <span> DOS SANTOS Domingos, P. A., Ricci-Donato, H. A., & Russi, A.
+                    K. F. D. (2018). Riscos do uso do flúor sistêmico: revisão de
+                    literatura. Journal of Research in Dentistry, 6(4).</span></p>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Seção de referência -->
+            <div class="artigo-section">
+              
+            </div>
+          </div>
+        </div>
+
+        <div id="status-geral" class="status-section"></div>
+        <div id="prescricoes" class="prescricoes"></div>
+        <div class="assinatura-profissional">
+          <img src="../template/assinatura.png" alt="">
+          <div class="assinatura-linha"></div>
+          <p>Drª Denise Braga</p>
+          <p>CRBM 17269 - Fitoterapeuta clínica PhD</p>
+          <p>Informações para Suporte e tele-consulta profissional: 61 9 8151-9696</p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="../login/auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script type="module" src="relatorio.js"></script>
+  </body>
+</html>

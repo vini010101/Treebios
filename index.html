@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TreeBios - Cadastro</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="page-container">
+      <!-- Header Section -->
+      <div class="header-section">
+        <img
+          src="/template/treebios_vertical-cor.png"
+          alt="TreeBios Logo"
+          class="logo"
+        />
+        <p class="subtitle">
+          Cadastre-se e comece sua jornada de<br />cuidado personalizado.
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="form-card">
+        <form
+          id="cadastroForm"
+          onsubmit="event.preventDefault(); validarESubmeter();"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome completo</label>
+              <div class="input-container">
+                <i data-lucide="user" class="input-icon"></i>
+                <input type="text" id="nome" required minlength="3" />
+                <span class="error-message" id="nomeError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Gênero</label>
+              <div class="input-container">
+                <i data-lucide="users" class="input-icon"></i>
+                <select id="genero" required>
+                  <option value="" selected disabled></option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                </select>
+                <span class="error-message" id="generoError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Faixa Etária</label>
+              <div class="input-container">
+                <i data-lucide="bar-chart-2" class="input-icon"></i>
+                <select id="faixaEtaria" required>
+                  <option value="" selected disabled></option>
+                  <option value="crianca">0 - 13 anos</option>
+                  <option value="adulto">14 - 69 anos</option>
+                  <option value="idoso">70+ anos</option>
+                </select>
+                <span class="error-message" id="faixaEtariaError"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome (Avaliador)</label>
+              <div class="input-container">
+                <i data-lucide="user-cog" class="input-icon"></i>
+                <input type="text" id="nomeAvaliador" required minlength="3" />
+                <span class="error-message" id="nomeAvaliadorError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Telefone(Avaliador)</label>
+              <div class="input-container">
+                <i data-lucide="phone" class="input-icon"></i>
+                <input
+                  type="text"
+                  id="telefoneAvaliador"
+                  required
+                  placeholder="(00) 00000-0000"
+                  maxlength="15"
+                />
+                <span class="error-message" id="telefoneAvaliadorError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Data realizada (Exame)</label>
+              <div class="input-container">
+                <i data-lucide="calendar" class="input-icon"></i>
+                <input type="date" id="dataExame" required />
+                <span class="error-message" id="dataExameError"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="logoUrl">Envio da sua logo (opcional)</label>
+              <div class="input-container">
+                <i data-lucide="folder-up" class="input-icon"></i>
+                <input type="file" id="logoUrl" accept="image/*" />
+                <label for="logoUrl" class="custom-file-upload">
+                  Escolher arquivo
+                </label>
+                <span class="error-message" id="dataUrlError"></span>
+                <!-- Espaço para mostrar a mensagem de sucesso -->
+                <p id="uploadSuccessMessage" style="display:none; color: green;">Arquivo carregado com sucesso!</p>
+              </div>
+            </div>
+
+          <button type="submit" class="submit-button">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+    <script src="/login/auth.js"></script>
+    <script>
+      lucide.createIcons();
+
+      const PLACEHOLDER_LOGO =
+        "https://treebios.com.br/template/treebios_vertical-cor.png";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Verificar se usuário está logado
+        if (!AuthService.isLoggedIn()) {
+          window.location.href = "/login/Login.html";
+          return;
+        }
+
+        // Exibir nome do usuário
+        const userData = AuthService.getUserData();
+        if (userData) {
+          document.getElementById("userName").textContent = userData.name;
+        }
+
+        // Inicializar ícones
+      });
+
+      // Formatação do telefone
+      document
+        .getElementById("telefoneAvaliador")
+        .addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+          let formattedValue = "";
+
+          if (value.length <= 11) {
+            if (value.length > 2) {
+              formattedValue += "(" + value.substring(0, 2) + ") ";
+              if (value.length > 7) {
+                formattedValue +=
+                  value.substring(2, 7) + "-" + value.substring(7);
+              } else {
+                formattedValue += value.substring(2);
+              }
+            } else {
+              formattedValue = value;
+            }
+
+            e.target.value = formattedValue;
+          }
+        });
+
+      // Validação de campos
+      function validarCampo(id, mensagem, validacao = null) {
+        const campo = document.getElementById(id);
+        const errorElement = document.getElementById(id + "Error");
+        let isValid = campo.value.trim() !== "";
+
+        if (validacao) {
+          isValid = isValid && validacao(campo.value);
+        }
+
+        if (!isValid) {
+          errorElement.textContent = mensagem;
+          campo.classList.add("invalid");
+        } else {
+          errorElement.textContent = "";
+          campo.classList.remove("invalid");
+        }
+
+        return isValid;
+      }
+
+      function validarNome(valor) {
+        return valor.length >= 3 && /^[a-zA-ZÀ-ÿ\s]+$/.test(valor);
+      }
+
+      function validarTelefone(valor) {
+        const telefoneRegex = /^\(\d{2}\)\s\d{5}-\d{4}$/;
+        return telefoneRegex.test(valor);
+      }
+
+      function validarData(valor) {
+        const data = new Date(valor);
+        const hoje = new Date();
+        return data <= hoje;
+      }
+
+      function validarESubmeter() {
+        const validacoes = [
+          validarCampo(
+            "nome",
+            "Nome inválido. Use apenas letras e espaços (mínimo 3 caracteres).",
+            validarNome
+          ),
+          validarCampo("genero", "Selecione um gênero."),
+          validarCampo("faixaEtaria", "Selecione uma faixa etária."),
+          validarCampo(
+            "nomeAvaliador",
+            "Nome do avaliador inválido. Use apenas letras e espaços (mínimo 3 caracteres).",
+            validarNome
+          ),
+          validarCampo(
+            "telefoneAvaliador",
+            "Telefone inválido. Use o formato (00) 00000-0000.",
+            validarTelefone
+          ),
+          validarCampo(
+            "dataExame",
+            "Data inválida. A data não pode ser futura.",
+            validarData
+          ),
+        ];
+
+        if (validacoes.every((v) => v)) {
+          salvarDados();
+        }
+      }
+
+      function convertBlobToBase64(blob) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onloadend = function () {
+                resolve(reader.result); // Retorna o Base64 quando a leitura for concluída
+            };
+
+            reader.onerror = function (error) {
+                reject("Erro ao converter para Base64: " + error); // Rejeita a promessa em caso de erro
+            };
+
+            reader.readAsDataURL(blob); // Converte o Blob para Base64
+        });
+      }
+
+
+      async function salvarDados() {
+        const fields = [
+          "nome",
+          "genero",
+          "faixaEtaria",
+          "dataExame",
+          "nomeAvaliador",
+          "telefoneAvaliador",
+        ];
+
+        fields.forEach((field) => {
+          localStorage.setItem(
+            field === "genero" ? "generoSelecionado" : field,
+            document.getElementById(field).value
+          );
+        });
+
+
+        const logoInput = document.querySelector("#logoUrl");
+        let base64Image = PLACEHOLDER_LOGO; 
+
+        if (logoInput.files && logoInput.files[0]) {
+          const file = logoInput.files[0]; 
+          const blob = file; 
+          base64Image = await convertBlobToBase64(blob); 
+        }
+
+        localStorage.setItem("logoUrl", base64Image); 
+        
+
+        window.location.href = "../exames/exames.html";
+      }
+    </script>
+    <script src="arquivo.js"></script>
+  </body>
+</html>
