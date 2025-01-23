@@ -12,7 +12,7 @@
 
 body {
   background-color: #e7ecff;
-  color: #071a4c;
+  color: #000000;
 }
 
 main {
@@ -28,7 +28,7 @@ main {
 
 /* Cores e elementos visuais */
 :root {
-  --color-primary: #3b5998;
+  --color-primary: #00BF63;
   --color-success: #63d681;
   --color-info: #6395d6;
   --color-warning: #a863d6;
@@ -76,7 +76,7 @@ main {
   text-align: center;
 
   h1 {
-    color: #3b5998;
+    color: #00BF63;
     font-weight: bold;
     font-size: 2.6rem;
     margin-bottom: 80px;
@@ -102,11 +102,11 @@ main {
   font-size: 1.1rem;
   margin-bottom: 5px;
   text-align: left;
-  color: #73b98e;
+  color: #030303;
 }
 
 .patient-info span {
-  color: #3b5998;
+  color: #00BF63;
   font-weight: 600;
 }
 
@@ -185,7 +185,7 @@ main {
 
 /* Título principal */
 .therapeutic-guide {
-  background-color: #3b5998;
+  background-color: #00BF63;
   color: white;
   padding: 25px;
   text-align: center;
@@ -211,7 +211,7 @@ main {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #3b5998;
+  color: #00BF63;
   font-size: 20px;
   margin-bottom: 20px;
 }
@@ -219,7 +219,7 @@ main {
 .inicio-dia h3 i {
   width: 24px;
   height: 24px;
-  stroke: #3b5998;
+  stroke: #00BF63;
 }
 
 .orientacao-content {
@@ -251,7 +251,7 @@ main {
 }
 
 .artigo-titulo {
-  color: #3b5998;
+  color: #00BF63;
   font-weight: 600;
   font-size: 16px;
   margin: 0;
@@ -390,7 +390,7 @@ main {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #3b5998;
+  color: #00BF63;
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -410,7 +410,7 @@ main {
 [data-lucide] {
   width: 22px;
   height: 22px;
-  stroke: #3b5998;
+  stroke: #00BF63;
   stroke-width: 2;
 }
 
@@ -426,12 +426,12 @@ table {
 }
 
 th {
-  background-color: #324f9d;
+  background-color: #00BF63;
   color: white;
 }
 
 td {
-  color: #324f9d;
+  color: #00BF63;
   border: 1px solid #e5e7eb;
 }
 
@@ -445,21 +445,21 @@ td {
 /* Marca abaixo do ideal (Q0) */
 tr:has(td:first-child):has([class*="Q0"]) .marked,
 tr:has(td:first-child):has([class*="Q1"]) .marked {
-  background-color: hsla(21, 100%, 50%, 0.63);
+  background-color: #ec0404ce;
   color: black;
 }
 
 /* Marca ideal (Q2-Q3) */
 tr:has(td:first-child):has([class*="Q2"]) .marked,
 tr:has(td:first-child):has([class*="Q3"]) .marked {
-  background-color: #9fd4af;
+  background-color: #00BF63;
   color: black;
 }
 
 /* Marca acima do ideal (Q5) */
 tr:has(td:first-child):has([class*="Q4"]) .marked,
 tr:has(td:first-child):has([class*="Q5"]) .marked {
-  background-color: hsla(21, 100%, 50%, 0.63);
+  background-color: #FF8800;
   color: black;
 }
 
@@ -502,7 +502,7 @@ tr:has(td:first-child):has([class*="Q5"]) .marked {
   font-size: 14px;
   text-align: center;
   padding: 10px;
-  background-color: #3b5998;
+  background-color: #00BF63;
   color: white;
 }
 
@@ -536,7 +536,7 @@ tr:has(td:first-child):has([class*="Q5"]) .marked {
 
 /* Termos em negrito */
 strong {
-  color: #324f9d;
+  color: #00BF63;
   font-weight: bold;
   display: inline;
   text-transform: uppercase;
@@ -616,13 +616,13 @@ strong {
 }
 
 .baixo {
-  background-color: hsla(21, 76%, 67%, 0.89);
+  background-color: #FF3B3B;
 }
 .ideal {
-  background-color: #9fd4af;
+  background-color: #00BF63;
 }
 .acima {
-  background-color: hsla(21, 100%, 50%, 0.63);
+  background-color: #FF8800;
 }
 
 @media screen and (max-width: 1024px) {

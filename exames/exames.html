@@ -115,7 +115,9 @@
             <!-- Botões -->
             <div class="button-group">
                 <button class="avancar-button" onclick="calcularQuartisFormulario()">Avançar</button>
-                <button class="voltar-button" onclick="window.location.href='../dadosCadastrais/DadosCadastrais.html'">Voltar</button>
+                <label for="upload-pdf" class="avancar-button" style="cursor: pointer;">Enviar Dados por PDF</label>
+                <input id="upload-pdf" type="file" accept=".pdf" style="display: none;" onchange="processarPDF(this.files[0])">
+                <button class="voltar-button" onclick="window.location.href='../dadosCadastrais/DadosCadastrais.html'">Voltar</button>               
             </div>
         </div>
     </div>
@@ -124,5 +126,55 @@
     </script>
     <script src="/login/auth.js"></script>
     <script src="quartis.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+    async function processarPDF(arquivo) {
+        if (!arquivo) return;
+
+        const fileReader = new FileReader();
+        fileReader.onload = async function () {
+            const typedarray = new Uint8Array(this.result);
+
+            // Carregar o PDF usando pdf.js
+            const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+            let textoExtraido = '';
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const textoContent = await page.getTextContent();
+                textoContent.items.forEach(item => {
+                    textoExtraido += item.str + ' ';
+                });
+            }
+
+            // Aqui você pode usar regex ou outras lógicas para extrair os dados desejados
+            preencherCampos(textoExtraido);
+        };
+
+        fileReader.readAsArrayBuffer(arquivo);
+    }
+
+    function preencherCampos(texto) {
+        // Exemplo de como preencher campos baseado no texto extraído
+        document.getElementById("hemacias").value = extrairValor(texto, /Hemácias.*?([\d,.]+)/);
+        document.getElementById("hemoglobina").value = extrairValor(texto, /Hemoglobina.*?([\d,.]+)/);
+        document.getElementById("hematocrito").value = extrairValor(texto, /Hematócrito.*?([\d,.]+)/);
+        document.getElementById("vcm").value = extrairValor(texto, /VCM.*?([\d,.]+)/);
+        document.getElementById("hcm").value = extrairValor(texto, /HCM.*?([\d,.]+)/);
+        document.getElementById("chcm").value = extrairValor(texto, /CHCM.*?([\d,.]+)/);
+        document.getElementById("rdw").value = extrairValor(texto, /RDW.*?([\d,.]+)/);
+        document.getElementById("plaquetas").value = extrairValor(texto, /Plaquetas.*?([\d,.]+)/);
+        document.getElementById("leucocitos").value = extrairValor(texto, /Leucócitos.*?([\d,.]+)/);
+        document.getElementById("eosinofilos").value = extrairValor(texto, /Eosinófilos.*?([\d,.]+)/);
+        document.getElementById("monocitos").value = extrairValor(texto, /Monócitos.*?([\d,.]+)/);
+    }
+
+    function extrairValor(texto, regex) {
+        const match = texto.match(regex);
+        return match ? match[1].replace(',', '.') : '';
+    }
+</script>
+
+
 </body>
 </html>

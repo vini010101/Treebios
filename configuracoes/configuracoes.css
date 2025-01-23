@@ -71,7 +71,7 @@ h2 {
   padding: 16px 24px;
   text-align: center;
   cursor: pointer;
-  color: #3B5998;
+  color: #00BF63;
   background: transparent;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -154,7 +154,7 @@ h2 {
 }
 
 .form-group h4 {
-  color: #3B5998;
+  color: #00BF63;
   font-size: 16px;
   margin-bottom: 15px;
 }
@@ -171,7 +171,7 @@ h2 {
   padding: 12px;
   border: 1px solid #E0E4F0;
   border-radius: 8px;
-  color: #3B5998;
+  color: #07641e;
   font-size: 14px;
 }
 
@@ -181,7 +181,7 @@ h2 {
 }
 
 .quartil-label {
-  color: #3B5998;
+  color: #00BF63;
   font-size: 14px;
   margin-bottom: 5px;
 }
@@ -204,15 +204,15 @@ h2 {
 }
 
 .save-button {
-  background: #3B5998;
+  background: #00BF63;
   color: white;
   border: none;
 }
 
 .back-button {
   background: white;
-  color: #3B5998;
-  border: 1px solid #3B5998;
+  color: #00BF63;
+  border: 1px solid #115f39;
 }
 
 /* Responsive */

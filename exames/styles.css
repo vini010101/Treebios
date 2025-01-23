@@ -34,7 +34,7 @@ body {
   background-color: white;
   border: none;
   border-radius: 8px;
-  color: #3B5998;
+  color: #00BF63;
   cursor: pointer;
   font-size: 14px;
 }
@@ -88,7 +88,7 @@ body {
 
 .form-group label {
   display: block;
-  color: #3B5998;
+  color: #00BF63;
   font-size: 14px;
   margin-bottom: 8px;
 }
@@ -103,7 +103,7 @@ body {
   border: 1px solid #E0E4F0;
   border-radius: 8px;
   font-size: 14px;
-  color: #71B69C;
+  color: #00BF63;
 }
 
 .input-wrapper input::placeholder {
@@ -112,7 +112,7 @@ body {
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: #71B69C;
+  border-color: #00BF63;
 }
 
 .check-icon {
@@ -120,7 +120,7 @@ body {
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #71B69C;
+  color: #00BF63;
   width: 18px;
   height: 18px;
 }
@@ -143,19 +143,25 @@ body {
 }
 
 .avancar-button {
-  background: #3B5998;
+  background: #00BF63;
   color: white;
   border: none;
 }
 
 .voltar-button {
   background: white;
-  color: #3B5998;
-  border: 1px solid #3B5998;
+  color: #13bd46;
+  border: 1px solid #00BF63;
 }
 
+/* Personalização do Botão de Upload */
+
+
+
+/* Personalização do Botão de Upload */
+
 .avancar-button:hover {
-  background: #2f477a;
+  background: #289e3c;
 }
 
 .voltar-button:hover {
